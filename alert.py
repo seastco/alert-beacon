@@ -27,7 +27,7 @@ EARTHQUAKE_PARAMS = {
     "minmagnitude": 6.1,
 } 
 
-POLL_INTERVAL = 300 # every 5 min
+POLL_INTERVAL = 180 # every 3 min
 USGS_API_URL = "https://earthquake.usgs.gov/fdsnws/event/1/query"
 client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
 
@@ -75,3 +75,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
