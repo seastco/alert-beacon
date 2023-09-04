@@ -31,9 +31,9 @@ POLL_INTERVAL = 300 # every 5 min
 USGS_API_URL = "https://earthquake.usgs.gov/fdsnws/event/1/query"
 client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
 
-def get_recent_earthquakes():
-    EARTHQUAKE_PARAMS["starttime"] = time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(time.time() - POLL_INTERVAL))
-    EARTHQUAKE_PARAMS["endtime"] = time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime())
+def get_recent_earthquakes(start_time, end_time):
+    EARTHQUAKE_PARAMS["starttime"] = time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(start_time))
+    EARTHQUAKE_PARAMS["endtime"] = time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(end_time))
 
     try:
         response = requests.get(USGS_API_URL, params=EARTHQUAKE_PARAMS)
@@ -65,10 +65,13 @@ def _get_formatted_time(earthquake):
     return formatted_time
 
 def monitor():
+    last_checked_time = time.time() - POLL_INTERVAL
     while True:
-        earthquakes = get_recent_earthquakes()
+        current_time = time.time()
+        earthquakes = get_recent_earthquakes(last_checked_time, current_time)
         for earthquake in earthquakes:
             send_alert(earthquake)
+        last_checked_time = current_time
         time.sleep(POLL_INTERVAL)
 
 def main():
