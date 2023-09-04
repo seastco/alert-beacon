@@ -10,7 +10,7 @@ SMS alerts for 6.1+ magnitude earthquakes on the United States west coast, prima
 - 7.0 to 7.9	Major earthquake. Serious damage.
 - 8.0 or greater	Great earthquake. Can totally destroy communities near the epicenter.
 
-California has experienced six 6.1+ magnitude earthquakes since 2000. 
+California has experienced six 6.1+ magnitude earthquakes since 2000. Oregon and Washington have each experienced one.
 
 ### [The Big One](https://laist.com/news/climate-environment/the-big-one-is-coming-to-southern-california-this-is-your-survival-guide)
 
