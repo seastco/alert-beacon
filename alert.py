@@ -1,13 +1,22 @@
+import os
 import requests
 import time
 import logging
+import pytz
+from twilio.rest import Client
+from dotenv import load_dotenv
+from datetime import datetime
+
+load_dotenv()
+
+# Twilio configuration
+TWILIO_SID = os.environ["TWILIO_SID"]
+TWILIO_AUTH_TOKEN = os.environ["TWILIO_AUTH_TOKEN"]
+TWILIO_PHONE = os.getenv("TWILIO_PHONE")
+RECIPIENT_PHONES = os.getenv("RECIPIENT_PHONES").split(",")
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
-USGS_API_URL = "https://earthquake.usgs.gov/fdsnws/event/1/query"
-
-POLL_INTERVAL = 180 # every 3 minutes
 
 EARTHQUAKE_PARAMS = {
     "format": "geojson",
@@ -17,6 +26,10 @@ EARTHQUAKE_PARAMS = {
     "maxlongitude": -115.0, # eastern limit
     "minmagnitude": 6.0,
 } 
+
+POLL_INTERVAL = 300 # every 5 min
+USGS_API_URL = "https://earthquake.usgs.gov/fdsnws/event/1/query"
+client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
 
 def get_recent_earthquakes():
     EARTHQUAKE_PARAMS["starttime"] = time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(time.time() - POLL_INTERVAL))
@@ -31,13 +44,25 @@ def get_recent_earthquakes():
         return []
 
 def send_alert(earthquake):
-    try:
-        message = f"ALERT! Earthquake detected: Magnitude {earthquake['properties']['mag']} at {earthquake['properties']['place']}"
-        print(message)
-        # TODO: twilio integration
-        logger.info(f"Sent alert for earthquake: {message}")
-    except Exception as e:
-        logger.error(f"Error sending alert: {e}")
+    formatted_time = _get_formatted_time(earthquake)
+    message = f"ALERT! {earthquake['properties']['mag']} magnitude earthquake detected {earthquake['properties']['place']} at {formatted_time}"
+    print(message)
+    for phone in RECIPIENT_PHONES:
+        try:
+            client.messages.create(
+                body=message,
+                from_=TWILIO_PHONE,
+                to=phone
+            )
+            logger.info(f"Sent alert to phone {phone}: {message}")
+        except Exception as e:
+            logger.error(f"Error sending alert: {e}")
+
+def _get_formatted_time(earthquake):
+    utc_time = datetime.fromtimestamp(earthquake['properties']['time'] / 1000, tz=pytz.utc)
+    pacific_time = utc_time.astimezone(pytz.timezone('US/Pacific'))
+    formatted_time = pacific_time.strftime("%I:%M %p %Z")
+    return formatted_time
 
 def monitor():
     while True:
