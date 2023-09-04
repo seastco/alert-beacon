@@ -24,7 +24,7 @@ EARTHQUAKE_PARAMS = {
     "maxlatitude": 52.0, # northern limit of Cascadia
     "minlongitude": -130.0, # western limit
     "maxlongitude": -115.0, # eastern limit
-    "minmagnitude": 1.0,
+    "minmagnitude": 6.1,
 } 
 
 POLL_INTERVAL = 300 # every 5 min
