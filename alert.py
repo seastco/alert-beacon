@@ -24,16 +24,16 @@ EARTHQUAKE_PARAMS = {
     "maxlatitude": 52.0, # northern limit of Cascadia
     "minlongitude": -130.0, # western limit
     "maxlongitude": -115.0, # eastern limit
-    "minmagnitude": 6.0,
+    "minmagnitude": 1.0,
 } 
 
 POLL_INTERVAL = 300 # every 5 min
 USGS_API_URL = "https://earthquake.usgs.gov/fdsnws/event/1/query"
 client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
 
-def get_recent_earthquakes(start_time, end_time):
-    EARTHQUAKE_PARAMS["starttime"] = time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(start_time))
-    EARTHQUAKE_PARAMS["endtime"] = time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(end_time))
+def get_recent_earthquakes():
+    EARTHQUAKE_PARAMS["starttime"] = time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(time.time() - POLL_INTERVAL))
+    EARTHQUAKE_PARAMS["endtime"] = time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime())
 
     try:
         response = requests.get(USGS_API_URL, params=EARTHQUAKE_PARAMS)
@@ -46,7 +46,6 @@ def get_recent_earthquakes(start_time, end_time):
 def send_alert(earthquake):
     formatted_time = _get_formatted_time(earthquake)
     message = f"ALERT! {earthquake['properties']['mag']} magnitude earthquake detected {earthquake['properties']['place']} at {formatted_time}"
-    print(message)
     for phone in RECIPIENT_PHONES:
         try:
             client.messages.create(
@@ -65,13 +64,10 @@ def _get_formatted_time(earthquake):
     return formatted_time
 
 def monitor():
-    last_checked_time = time.time() - POLL_INTERVAL
     while True:
-        current_time = time.time()
-        earthquakes = get_recent_earthquakes(last_checked_time, current_time)
+        earthquakes = get_recent_earthquakes()
         for earthquake in earthquakes:
             send_alert(earthquake)
-        last_checked_time = current_time
         time.sleep(POLL_INTERVAL)
 
 def main():
