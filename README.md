@@ -2,9 +2,19 @@
 
 SMS alerts for 6.1+ magnitude earthquakes on the United States west coast, primarily in anticipation of this century's _Big One_ events.
 
+### [Magnitude scale](https://en.wikipedia.org/wiki/Moment_magnitude_scale)
+- 2.5 or less - Usually not felt, but can be recorded by seismograph.
+- 2.5 to 5.4	Often felt, but only causes minor damage.
+- 5.5 to 6.0	Slight damage to buildings and other structures.
+- 6.1 to 6.9	May cause a lot of damage in very populated areas.
+- 7.0 to 7.9	Major earthquake. Serious damage.
+- 8.0 or greater	Great earthquake. Can totally destroy communities near the epicenter.
+
+California has experienced six 6.1+ magnitude earthquakes since 2000. 
+
 ### [The Big One](https://laist.com/news/climate-environment/the-big-one-is-coming-to-southern-california-this-is-your-survival-guide)
 
-The Ridgecrest earthquakes that hit on July 4 and July 5 with a magnitude 6.4 and 7.1, respectively, were the most recent major earthquake in Southern California. The 7.1 lasted 12 seconds and was felt by about 30 million people. More than 6,000 lost power. These earthquakes followed a 25 year "quiet period" after Northridge, which was a 6.7 magnitude earthquake that killed 58, injured more than 9,000 and caused more than $49 billion in economic loss. That quake lasted less than 20 seconds.
+The Ridgecrest earthquakes that hit on July 4-5th, 2019 with a magnitude 6.4 and 7.1, respectively, were the most recent major earthquake in Southern California. The 7.1 lasted 12 seconds and was felt by about 30 million people. More than 6,000 lost power. These earthquakes followed a 25 year "quiet period" after Northridge, which was a 6.7 magnitude earthquake that killed 58, injured more than 9,000 and caused more than $49 billion in economic loss. That quake lasted less than 20 seconds.
 
 _The Big One_ will be at least 11 times stronger than the Ridgecrest earthquake and 44 times stronger than Northridge.
 
