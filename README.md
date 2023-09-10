@@ -28,7 +28,6 @@ According to [The ShakeOut Scenario](https://pubs.usgs.gov/of/2008/1150/), a 7.8
 - 750 people will be trapped inside buildings with complete collapse.
 - 270,000 people will be immediately displaced from their homes.
 - 50,000 people will need ER care.
-- 11 days out, people will start to drink more.
 - Search and rescue efforts will last for 19 days.
 
 ### [The Really Big One](https://www.newyorker.com/magazine/2015/07/20/the-really-big-one)
