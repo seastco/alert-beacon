@@ -24,7 +24,7 @@ EARTHQUAKE_PARAMS = {
     "minmagnitude": 6.1,
 } 
 
-SECONDS_IN_PAST = 121
+SECONDS_IN_PAST = 480 # 8 min
 USGS_API_URL = "https://earthquake.usgs.gov/fdsnws/event/1/query"
 client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
 
