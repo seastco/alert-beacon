@@ -8,15 +8,14 @@ from dotenv import load_dotenv
 from datetime import datetime
 
 load_dotenv()
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Twilio configuration
 TWILIO_SID = os.environ["TWILIO_SID"]
 TWILIO_AUTH_TOKEN = os.environ["TWILIO_AUTH_TOKEN"]
 TWILIO_PHONE = os.environ["TWILIO_PHONE"]
 RECIPIENT_PHONES = os.environ["RECIPIENT_PHONES"].split(",")
-
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 EARTHQUAKE_PARAMS = {
     "format": "geojson",
@@ -37,11 +36,17 @@ def get_recent_earthquakes():
 
     try:
         response = requests.get(USGS_API_URL, params=EARTHQUAKE_PARAMS)
+        response.raise_for_status()
         data = response.json()
-        return data["features"]
+        return data.get("features", [])
     except requests.RequestException as e:
         logger.error(f"Error fetching earthquake data: {e}")
-        return []
+    except ValueError as e:  # Catch JSONDecodeError
+        logger.error(f"Unable to decode JSON response: {e}")
+    except Exception as e:  # Catch any other exception
+        logger.error(f"An unexpected error occurred: {e}")
+    
+    return []
 
 def send_alert(earthquake):
     formatted_time = _get_formatted_time(earthquake)
@@ -63,15 +68,12 @@ def _get_formatted_time(earthquake):
     formatted_time = pacific_time.strftime("%I:%M %p %Z")
     return formatted_time
 
-def monitor():
+def main():
     while True:
         earthquakes = get_recent_earthquakes()
         for earthquake in earthquakes:
             send_alert(earthquake)
         time.sleep(POLL_INTERVAL)
-
-def main():
-    monitor()
 
 if __name__ == "__main__":
     main()
