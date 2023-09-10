@@ -12,8 +12,8 @@ load_dotenv()
 # Twilio configuration
 TWILIO_SID = os.environ["TWILIO_SID"]
 TWILIO_AUTH_TOKEN = os.environ["TWILIO_AUTH_TOKEN"]
-TWILIO_PHONE = os.getenv("TWILIO_PHONE")
-RECIPIENT_PHONES = os.getenv("RECIPIENT_PHONES").split(",")
+TWILIO_PHONE = os.environ["TWILIO_PHONE"]
+RECIPIENT_PHONES = os.environ["RECIPIENT_PHONES"].split(",")
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
