@@ -4,7 +4,7 @@ Earthquake Alert is an SMS alert system for 6.1+ magnitude earthquakes on the Un
 
 The hosted implementation is querying the United States Geological Survey (USGS) system every 3 minutes using AWS Lambda and EventBridge Scheduler. An earthquake takes 2-8 minutes to be processed and posted to the USGS system, so to account for this the script has a lookback period of 10 minutes. Given that the query happens every 3 minutes, this may result in a duplicate alert or two.
 
-If you'd like to host this yourself, the lambda package is available under lambda_package.zip, otherwise you can email me your phone number at seastco@proton.me. 
+To subscribe, email me your phone number at seastco@proton.me. If you'd like to host this yourself, the lambda package is available under lambda_package.zip.
 
 ### [Magnitude scale](https://en.wikipedia.org/wiki/Moment_magnitude_scale)
 - 2.5 or less - Usually not felt, but can be recorded by seismograph.
