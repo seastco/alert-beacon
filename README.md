@@ -1,6 +1,6 @@
 # Earthquake Alert
 
-Earthquake Alert is an SMS notification system for 6.1+ magnitude earthquakes on the United States west coast, primarily in anticipation of this century's _Big One_ events.
+Earthquake Alert is an SMS alert system for 6.1+ magnitude earthquakes on the United States west coast, primarily in anticipation of this century's _Big One_ events.
 
 The hosted implementation is querying the United States Geological Survey (USGS) system every 3 minutes using AWS Lambda and EventBridge Scheduler. An earthquake takes 2-8 minutes to be processed and posted to the USGS system, so to account for this the script has a lookback period of 10 minutes. Given that the query happens every 3 minutes, this may result in a duplicate alert or two.
 
