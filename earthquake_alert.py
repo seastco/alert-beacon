@@ -4,10 +4,8 @@ import time
 import logging
 import pytz
 from twilio.rest import Client
-from dotenv import load_dotenv
 from datetime import datetime
 
-load_dotenv()
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -26,12 +24,17 @@ EARTHQUAKE_PARAMS = {
     "minmagnitude": 6.1,
 } 
 
-POLL_INTERVAL = 180 # every 3 min
+SECONDS_IN_PAST = 121
 USGS_API_URL = "https://earthquake.usgs.gov/fdsnws/event/1/query"
 client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
 
+def lambda_handler(event, context):
+    earthquakes = get_recent_earthquakes()
+    for earthquake in earthquakes:
+        send_alert(earthquake)
+
 def get_recent_earthquakes():
-    EARTHQUAKE_PARAMS["starttime"] = time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(time.time() - POLL_INTERVAL))
+    EARTHQUAKE_PARAMS["starttime"] = time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(time.time() - SECONDS_IN_PAST))
     EARTHQUAKE_PARAMS["endtime"] = time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime())
 
     try:
@@ -67,14 +70,4 @@ def _get_formatted_time(earthquake):
     pacific_time = utc_time.astimezone(pytz.timezone('US/Pacific'))
     formatted_time = pacific_time.strftime("%I:%M %p %Z")
     return formatted_time
-
-def main():
-    while True:
-        earthquakes = get_recent_earthquakes()
-        for earthquake in earthquakes:
-            send_alert(earthquake)
-        time.sleep(POLL_INTERVAL)
-
-if __name__ == "__main__":
-    main()
 
