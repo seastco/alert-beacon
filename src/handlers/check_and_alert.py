@@ -9,7 +9,7 @@ def lambda_handler(event, context):
     try:
         earthquakes = get_recent_earthquakes()
         if not earthquakes:
-            return
+            return {'statusCode': 200}
         
         subscribers = get_subscribers()
         
@@ -19,6 +19,8 @@ def lambda_handler(event, context):
                 logger.info(f'Alert for earthquake {earthquake["id"]} sent successfully')
                 store_sent_alert(earthquake['id'])
         
+        return {'statusCode': 200}
+    
     except Exception as e:
         logger.error(f"Unhandled exception: {e}")
         return {'statusCode': 500, 'body': f'Internal server error: {str(e)}'}
