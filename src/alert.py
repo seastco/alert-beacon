@@ -5,6 +5,7 @@ from datetime import datetime
 from twilio.rest import Client
 
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 # Twilio configuration
 TWILIO_SID = os.environ["TWILIO_SID"]

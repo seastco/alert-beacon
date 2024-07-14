@@ -1,7 +1,7 @@
 import logging
-from usgs_api import get_recent_earthquakes
-from dynamodb import get_subscribers, alert_already_sent, store_sent_alert
-from earthquake_alert import send_alert
+from src.usgs_api import get_recent_earthquakes
+from src.dynamodb import get_subscribers, alert_already_sent, store_sent_alert
+from src.alert import send_alert
 
 def lambda_handler(event, context):
     earthquakes = get_recent_earthquakes()
@@ -16,5 +16,3 @@ def lambda_handler(event, context):
             send_alert(earthquake, subscribers)
             store_sent_alert(earthquake['id'])
 
-if __name__ == "__main__":
-    lambda_handler(None, None)
