@@ -15,10 +15,10 @@ USGS_API_URL = "https://earthquake.usgs.gov/fdsnws/event/1/query"
 
 EARTHQUAKE_PARAMS = {
     "format": "geojson",
-    "minlatitude": MIN_LATITUDE,  # southern limit of California
-    "maxlatitude": MAX_LATITUDE,  # northern limit of Cascadia
-    "minlongitude": MIN_LONGITUDE,  # western limit
-    "maxlongitude": MAX_LONGITUDE,  # eastern limit
+    "minlatitude": MIN_LATITUDE,   # southern limit of California
+    "maxlatitude": MAX_LATITUDE,   # northern limit of Cascadia
+    "minlongitude": MIN_LONGITUDE, # western limit
+    "maxlongitude": MAX_LONGITUDE, # eastern limit
     "minmagnitude": MIN_MAGNITUDE,
 }
 
