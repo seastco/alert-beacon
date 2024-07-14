@@ -18,27 +18,12 @@ def get_subscribers():
         logger.error(f"Error fetching subscribers: {e}")
         return []
 
-def add_subscriber(phone_number):
+def store_sent_alert(earthquake_id):
     try:
-        subscribers_table.put_item(
-            Item={'PhoneNumber': phone_number},
-            ConditionExpression='attribute_not_exists(PhoneNumber)'
-        )
-        logger.info(f"Added subscriber: {phone_number}")
+        alerts_table.put_item(Item={'EarthquakeID': earthquake_id})
+        logger.info(f"Stored alert for earthquake ID: {earthquake_id}")
     except ClientError as e:
-        if e.response['Error']['Code'] == 'ConditionalCheckFailedException':
-            logger.info(f"Subscriber {phone_number} already exists.")
-        else:
-            logger.error(f"Error adding subscriber: {e}")
-            raise
-
-def remove_subscriber(phone_number):
-    try:
-        subscribers_table.delete_item(Key={'PhoneNumber': phone_number})
-        logger.info(f"Removed subscriber: {phone_number}")
-    except ClientError as e:
-        logger.error(f"Error removing subscriber: {e}")
-        raise
+        logger.error(f"Error storing alert in DynamoDB: {e}")
 
 def alert_already_sent(earthquake_id):
     try:
@@ -47,10 +32,3 @@ def alert_already_sent(earthquake_id):
     except ClientError as e:
         logger.error(f"Error checking DynamoDB: {e}")
         return False
-
-def store_sent_alert(earthquake_id):
-    try:
-        alerts_table.put_item(Item={'EarthquakeID': earthquake_id})
-        logger.info(f"Stored alert for earthquake ID: {earthquake_id}")
-    except ClientError as e:
-        logger.error(f"Error storing alert in DynamoDB: {e}")

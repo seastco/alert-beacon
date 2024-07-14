@@ -1,5 +1,5 @@
-*.env
-test.py
+admin
 lambda_package
+*.env
 venv/
 __pycache__/
