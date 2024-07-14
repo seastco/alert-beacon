@@ -4,7 +4,7 @@ Earthquake Alert is an SMS alert system for 6.1+ magnitude earthquakes on the Un
 
 The hosted implementation is querying the United States Geological Survey (USGS) system every minute using AWS Lambda and EventBridge Scheduler.
 
-To subscribe, email me your phone number at seastco@proton.me. If you'd like to host this yourself, you can use the lambda package uploaded to this repo.
+To subscribe, email me your phone number at seastco@proton.me.
 
 ### [Magnitude scale](https://en.wikipedia.org/wiki/Moment_magnitude_scale)
 - 2.5 or less - Usually not felt, but can be recorded by seismograph.
