@@ -15,4 +15,3 @@ def lambda_handler(event, context):
         if not alert_already_sent(earthquake['id']):
             send_alert(earthquake, subscribers)
             store_sent_alert(earthquake['id'])
-

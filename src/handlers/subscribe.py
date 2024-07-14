@@ -2,7 +2,6 @@ from src.dynamodb import add_subscriber
 import logging
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
 
 def lambda_handler(event, context):
     phone_number = event.get('phone_number')
