@@ -30,7 +30,6 @@ class TestVolcanoAlert(unittest.TestCase):
         mock_get.return_value.json.return_value = mock_response
 
         data = self.alert.fetch_data()
-
         self.assertEqual(len(data), 2)
         self.assertEqual(data[0]["volcano_name_appended"], "Mount Vesuvius")
 
@@ -41,15 +40,9 @@ class TestVolcanoAlert(unittest.TestCase):
     def test_format_alert(self):
         # Create a mock for the geolocator
         mock_geolocator = MagicMock()
-
-        # Create a mock location
         mock_location = MagicMock()
         mock_location.raw = {"address": {"town": "Ottaviano", "state": "Campania"}}
-
-        # Set up the mock geolocator to return our mock location
         mock_geolocator.reverse.return_value = mock_location
-
-        # Replace the real geolocator with our mock
         self.alert.geolocator = mock_geolocator
 
         volcano = {
@@ -57,20 +50,14 @@ class TestVolcanoAlert(unittest.TestCase):
             "latitude": "40.821",
             "longitude": "14.426",
         }
-
         formatted_alert = self.alert.format_alert(volcano)
 
         # Check that the geolocator was called with the correct coordinates
         mock_geolocator.reverse.assert_called_once_with(("40.821", "14.426"))
 
         # Assert the content of the formatted alert
-        self.assertIn("ALERT!", formatted_alert)
-        self.assertIn("Mount Vesuvius", formatted_alert)
-        self.assertIn("Ottaviano, Campania", formatted_alert)
-
-        # Optionally, you can assert the exact string if needed
         expected_alert = (
-            "ALERT! A major eruption of Mount Vesuvius is underway near Ottaviano, Campania."
+            "ALERT! Mount Vesuvius near Ottaviano, Campania, is experiencing a major eruption."
         )
         self.assertEqual(formatted_alert, expected_alert)
 

@@ -33,7 +33,7 @@ class VolcanoAlert(BaseAlert):
         location = self.geolocator.reverse((latitude, longitude))
         locality, state = self._validate_location(location)
 
-        return f"ALERT! A major eruption of {volcano_name} is underway near {locality}, {state}."
+        return f"ALERT! {volcano_name} near {locality}, {state}, is experiencing a major eruption."
 
     def get_id(self, volcano: Dict[str, Any]) -> str:
         if "guid" not in volcano:
