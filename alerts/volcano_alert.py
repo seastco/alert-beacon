@@ -9,9 +9,7 @@ from geopy.location import Location
 class VolcanoAlert(BaseAlert):
     def __init__(self):
         self.config = Config()
-        self.api_url = (
-            "https://volcanoes.usgs.gov/hans-public/api/volcano/getCapElevated"
-        )
+        self.api_url = "https://volcanoes.usgs.gov/hans-public/api/volcano/getCapElevated"
         self.geolocator = Nominatim(user_agent="catastrophic-alert")
 
     def fetch_data(self) -> List[Dict[str, Any]]:
@@ -37,9 +35,12 @@ class VolcanoAlert(BaseAlert):
 
         return f"RED ALERT! A major volcanic eruption of {volcano_name} is underway near {locality}, {state}."
 
-    def _validate_volcano(
-        self, volcano: Dict[str, Any], required_keys: List[str]
-    ) -> None:
+    def get_id(self, volcano: Dict[str, Any]) -> str:
+        if "guid" not in volcano:
+            raise KeyError("volcano['guid'] does not exist")
+        return volcano["guid"]
+
+    def _validate_volcano(self, volcano: Dict[str, Any], required_keys: List[str]) -> None:
         if not isinstance(volcano, dict):
             raise ValueError("invalid volcano object: not a dictionary")
         for key in required_keys:
@@ -50,6 +51,7 @@ class VolcanoAlert(BaseAlert):
         address = location.raw.get("address")
         if not address:
             raise KeyError("location address does not exist")
+
         locality = (
             address.get("city")
             or address.get("town")
@@ -61,4 +63,5 @@ class VolcanoAlert(BaseAlert):
             raise KeyError("location address locality does not exist")
         if not state:
             raise KeyError("location address state does not exist")
+
         return locality, state
