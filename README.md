@@ -1,6 +1,6 @@
-# Alert Beacon
+# Catastrophic Alert
 
-Alert Beacon is an SMS alert system for catastrophic natural disasters. Currently only monitoring for 6.1+ magnitude earthquakes on the United States west coast, in anticipation of this century's _Big One_ events.
+Catastrophic Alert is an SMS alert system for catastrophic natural disasters. Currently only monitoring for 6.1+ magnitude earthquakes on the United States west coast, in anticipation of this century's _Big One_ events.
 
 Feature roadmap:
 - [X] Earthquakes
