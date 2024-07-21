@@ -1,5 +1,6 @@
 admin
 lambda_package
 *.env
+*.swp
 venv/
 __pycache__/
