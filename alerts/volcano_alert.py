@@ -8,9 +8,9 @@ from geopy.location import Location
 
 class VolcanoAlert(BaseAlert):
     def __init__(self):
-        self.config = Config()
-        self.api_url = "https://volcanoes.usgs.gov/hans-public/api/volcano/getCapElevated"
-        self.geolocator = Nominatim(user_agent="catastrophic-alert")
+        self.config: Config = Config()
+        self.api_url: str = "https://volcanoes.usgs.gov/hans-public/api/volcano/getCapElevated"
+        self.geolocator: Nominatim = Nominatim(user_agent="catastrophic-alert")
 
     def fetch_data(self) -> List[Dict[str, Any]]:
         response = requests.get(self.api_url)
@@ -33,7 +33,7 @@ class VolcanoAlert(BaseAlert):
         location = self.geolocator.reverse((latitude, longitude))
         locality, state = self._validate_location(location)
 
-        return f"RED ALERT! A major volcanic eruption of {volcano_name} is underway near {locality}, {state}."
+        return f"ALERT! A major eruption of {volcano_name} is underway near {locality}, {state}."
 
     def get_id(self, volcano: Dict[str, Any]) -> str:
         if "guid" not in volcano:

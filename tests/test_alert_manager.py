@@ -8,9 +8,7 @@ class TestAlertManager(unittest.TestCase):
     @patch("services.alert_manager.StorageService")
     @patch("services.alert_manager.NotificationService")
     @patch("services.alert_factory.AlertFactory.create_alert")
-    def test_process_alerts(
-        self, mock_create_alert, MockNotificationService, MockStorageService
-    ):
+    def test_process_alerts(self, mock_create_alert, MockNotificationService, MockStorageService):
         # Mock storage service
         mock_storage_service = MockStorageService.return_value
         mock_storage_service.get_subscribers.return_value = [
@@ -55,9 +53,7 @@ class TestAlertManager(unittest.TestCase):
         alert_manager.process_alerts(["earthquake"])
 
         # Verify that send_alert and store_sent_alerts were called the expected number of times
-        expected_message = (
-            "ALERT! 6.5 magnitude earthquake detected California at 1623943442000"
-        )
+        expected_message = "ALERT! 6.5 magnitude earthquake detected California at 1623943442000"
         mock_notification_service.send_alert.assert_called_with(
             expected_message, ["+1234567890", "+0987654321"]
         )
