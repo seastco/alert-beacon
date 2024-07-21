@@ -29,13 +29,15 @@ class StorageService:
             response = self.alerts_table.get_item(Key={'ID': alert_id})
             return 'Item' in response
         except ClientError as e:
-            self.logger.error("Error checking DynamoDB: {e}")
+            self.logger.error(f"Error checking DynamoDB: {e}")
             raise
 
-    def store_sent_alert(self, alert_id):
+    def store_sent_alerts(self, alert_ids):
         try:
-            self.alerts_table.put_item(Item={'ID': alert_id})
-            self.logger.info(f"Stored alert for ID: {alert_id}")
+            with self.alerts_table.batch_writer() as batch:
+                for alert_id in alert_ids:
+                    batch.put_item(Item={'ID': alert_id})
+            self.logger.info(f"Stored alerts for IDs: {alert_ids}")
         except ClientError as e:
-            self.logger.error(f"Error storing alert in DynamoDB: {e}")
+            self.logger.error(f"Error storing alerts in DynamoDB: {e}")
             raise
