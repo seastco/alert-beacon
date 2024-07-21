@@ -20,7 +20,10 @@ class VolcanoAlert(BaseAlert):
     def should_alert(self, volcano: Dict[str, Any]) -> bool:
         required_keys = ["color_code", "alert_level"]
         self._validate_volcano(volcano, required_keys)
-        return volcano["color_code"] == "RED" and volcano["alert_level"] == "WARNING"
+
+        color_code = self.config.get("COLOR_CODE")
+        alert_level = self.config.get("ALERT_LEVEL")
+        return volcano["color_code"] == color_code and volcano["alert_level"] == alert_level
 
     def format_alert(self, volcano: Dict[str, Any]) -> str:
         required_keys = ["volcano_name_appended", "latitude", "longitude"]

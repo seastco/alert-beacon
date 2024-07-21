@@ -14,6 +14,10 @@ class Config:
             "MIN_LONGITUDE": os.getenv("MIN_LONGITUDE", "-130.0"),
             "MAX_LONGITUDE": os.getenv("MAX_LONGITUDE", "-115.0"),
             "SECONDS_IN_PAST": os.getenv("SECONDS_IN_PAST", "601"),
+            "COLOR_CODE": os.getenv("COLOR_CODE", "RED"),
+            "ALERT_LEVEL": os.getenv("ALERT_LEVEL", "WARNING"),
+            "ENVIRONMENT": os.getenv("ENVIRONMENT", "prod"),
+            "TEST_SUBSCRIBERS": os.getenv("TEST_SUBSCRIBERS", "").split(","),
         }
 
     def get(self, key: str) -> str:
