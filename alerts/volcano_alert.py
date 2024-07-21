@@ -12,9 +12,7 @@ class VolcanoAlert(BaseAlert):
         self.api_url = (
             "https://volcanoes.usgs.gov/hans-public/api/volcano/getCapElevated"
         )
-        self.geolocator = Nominatim(
-            user_agent="catastrophic-alert"
-        )  # Initialize geolocator once
+        self.geolocator = Nominatim(user_agent="catastrophic-alert")
 
     def fetch_data(self) -> List[Dict[str, Any]]:
         response = requests.get(self.api_url)
