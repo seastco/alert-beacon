@@ -21,9 +21,9 @@ class AlertManager:
             alert = AlertFactory.create_alert(alert_type)
             data = alert.fetch_data()
             for item in data:
-                if alert.should_alert(item) and not self.storage_service.alert_already_sent(
-                    alert.get_id(item)
-                ):
+                should_alert = alert.should_alert(item)
+                id = alert.get_id(item)
+                if should_alert and not self.storage_service.alert_already_sent(id):
                     message = alert.format_alert(item)
                     alerts_to_send.append((alert.get_id(item), message))
 
