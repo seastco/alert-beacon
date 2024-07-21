@@ -4,3 +4,4 @@ lambda_package
 *.swp
 venv/
 __pycache__/
+tests/test_main.py
