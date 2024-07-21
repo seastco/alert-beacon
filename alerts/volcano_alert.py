@@ -20,20 +20,21 @@ class VolcanoAlert(BaseAlert):
     def should_alert(self, volcano: Dict[str, Any]) -> bool:
         required_keys = ["color_code", "alert_level"]
         self._validate_volcano(volcano, required_keys)
-        return volcano["color_code"] == "RED" and volcano["alert_level"] == "WARNING"
+
+        color_code = self.config.get("COLOR_CODE")
+        alert_level = self.config.get("ALERT_LEVEL")
+        return volcano["color_code"] == color_code and volcano["alert_level"] == alert_level
 
     def format_alert(self, volcano: Dict[str, Any]) -> str:
         required_keys = ["volcano_name_appended", "latitude", "longitude"]
         self._validate_volcano(volcano, required_keys)
 
-        volcano_name = volcano["volcano_name_appended"]
         latitude = volcano["latitude"]
         longitude = volcano["longitude"]
-
         location = self.geolocator.reverse((latitude, longitude))
         locality, state = self._validate_location(location)
-
-        return f"ALERT! A major eruption of {volcano_name} is underway near {locality}, {state}."
+        volcano_name = volcano["volcano_name_appended"]
+        return f"ALERT! {volcano_name} near {locality}, {state}, is experiencing a major eruption."
 
     def get_id(self, volcano: Dict[str, Any]) -> str:
         if "guid" not in volcano:
