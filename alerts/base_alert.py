@@ -12,4 +12,3 @@ class BaseAlert(ABC):
     @abstractmethod
     def format_alert(self, data):
         pass
-    
