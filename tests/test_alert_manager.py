@@ -8,9 +8,7 @@ class TestAlertManager(unittest.TestCase):
     @patch("services.alert_manager.StorageService")
     @patch("services.alert_manager.NotificationService")
     @patch("services.alert_factory.AlertFactory.create_alert")
-    def test_process_alerts(
-        self, mock_create_alert, MockNotificationService, MockStorageService
-    ):
+    def test_process_alerts(self, mock_create_alert, MockNotificationService, MockStorageService):
         # Mock storage service
         mock_storage_service = MockStorageService.return_value
         mock_storage_service.get_subscribers.return_value = [
@@ -38,9 +36,8 @@ class TestAlertManager(unittest.TestCase):
                 "id": "test2",
             },
         ]
-        mock_alert.should_alert.side_effect = (
-            lambda item: item["properties"]["mag"] >= 6.0
-        )
+        mock_alert.get_id.return_value = "test1"
+        mock_alert.should_alert.side_effect = lambda item: item["properties"]["mag"] >= 6.0
         mock_alert.format_alert.side_effect = (
             lambda item: f"ALERT! {item['properties']['mag']} magnitude earthquake detected {item['properties']['place']} at {item['properties']['time']}"
         )
@@ -55,14 +52,12 @@ class TestAlertManager(unittest.TestCase):
         # Process alerts
         alert_manager.process_alerts(["earthquake"])
 
-        # Verify that send_alert and store_sent_alert were called the expected number of times
-        expected_message = (
-            "ALERT! 6.5 magnitude earthquake detected California at 1623943442000"
-        )
+        # Verify that send_alert and store_sent_alerts were called the expected number of times
+        expected_message = "ALERT! 6.5 magnitude earthquake detected California at 1623943442000"
         mock_notification_service.send_alert.assert_called_with(
             expected_message, ["+1234567890", "+0987654321"]
         )
-        mock_storage_service.store_sent_alert.assert_called_once_with("test1")
+        mock_storage_service.store_sent_alerts.assert_called_once_with(["test1"])
 
 
 if __name__ == "__main__":
