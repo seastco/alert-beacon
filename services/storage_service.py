@@ -1,17 +1,18 @@
 import boto3
 import logging
-import os
 from typing import List
 from botocore.exceptions import ClientError
+from config.config import Config
 
 
 class StorageService:
     def __init__(self):
+        self.config: Config = Config()
         self.dynamodb = boto3.resource("dynamodb")
         self.subscribers_table = self.dynamodb.Table("Subscribers")
         self.alerts_table = self.dynamodb.Table("SentAlerts")
-        self.environment: str = os.getenv("ENVIRONMENT", "prod")
-        self.test_subscribers: List[str] = os.getenv("TEST_SUBSCRIBERS", "").split(",")
+        self.environment: str = self.config.get("ENVIRONMENT")
+        self.test_subscribers: List[str] = self.config.get("TEST_SUBSCRIBERS")
         self.logger: logging.Logger = logging.getLogger(__name__)
         self.logger.setLevel(logging.INFO)
 
