@@ -35,7 +35,9 @@ class TestEarthquakeAlert(unittest.TestCase):
 
     def test_should_alert(self):
         alert = EarthquakeAlert()
-        earthquake = {"properties": {"mag": 6.5}}
+        earthquake = {
+            "properties": {"mag": 6.5, "place": "California", "time": 1623943442000}
+        }
         self.assertTrue(alert.should_alert(earthquake))
 
     def test_format_alert(self):

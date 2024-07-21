@@ -11,16 +11,15 @@ class AlertManager:
     def process_alerts(self, alert_types):
         alerts_to_send = []
         alert_ids_to_store = []
-
         for alert_type in alert_types:
             alert = AlertFactory.create_alert(alert_type)
             data = alert.fetch_data()
             for item in data:
-                if alert.should_alert(
-                    item
-                ) and not self.storage_service.alert_already_sent(item["id"]):
+                if alert.should_alert(item) and not self.storage_service.alert_already_sent(
+                    alert.get_id(item)
+                ):
                     message = alert.format_alert(item)
-                    alerts_to_send.append((item["id"], message))
+                    alerts_to_send.append((alert.get_id(item), message))
 
         if alerts_to_send:
             subscribers = self.storage_service.get_subscribers()

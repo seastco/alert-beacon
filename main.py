@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 def lambda_handler(event, context):
     try:
         alert_manager = AlertManager()
-        alert_types = ["earthquake"]
+        alert_types = ["earthquake", "volcano"]
         alert_manager.process_alerts(alert_types)
         return {"statusCode": 200}
     except Exception as e:

@@ -1,7 +1,4 @@
-import time
-import requests
 from alerts.volcano_alert import VolcanoAlert
-from geopy.geocoders import Nominatim
 
 
 # Example usage:
