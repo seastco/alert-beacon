@@ -32,4 +32,4 @@ class Config:
     def format_time(timestamp: int) -> str:
         utc_time = datetime.fromtimestamp(timestamp / 1000, tz=pytz.utc)
         pacific_time = utc_time.astimezone(pytz.timezone("US/Pacific"))
-        return pacific_time.strftime("%I:%M %p %Z")
+        return pacific_time.strftime("%-I:%M %p %Z")

@@ -40,15 +40,15 @@ class TestMain(unittest.TestCase):
             {
                 "properties": {
                     "mag": 6.5,
-                    "place": "California",
-                    "time": 1623943442000,
+                    "place": "219 km WSW of Tofino, Canada",
+                    "time": "8:08 AM PDT",
                 },
                 "id": "test1",
             }
         ]
         mock_alert.should_alert.return_value = True
         mock_alert.format_alert.return_value = (
-            "ALERT! 6.5 magnitude earthquake detected California at 1623943442000"
+            "ALERT! 6.5 magnitude earthquake detected 219 km WSW of Tofino, Canada at 8:08 AM PDT"
         )
         return mock_alert
 
@@ -66,7 +66,7 @@ class TestMain(unittest.TestCase):
         ]
         mock_alert.should_alert.return_value = True
         mock_alert.format_alert.return_value = (
-            "ALERT! A major eruption of Mount Vesuvius is underway near Locality, State."
+            "ALERT! Mount Vesuvius near Locality, State, is experiencing a major eruption."
         )
         return mock_alert
 
