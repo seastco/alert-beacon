@@ -1,5 +1,6 @@
 from alerts.earthquake_alert import EarthquakeAlert
 
+
 class AlertFactory:
     @staticmethod
     def create_alert(alert_type):

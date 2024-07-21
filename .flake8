@@ -1,0 +1,13 @@
+[flake8]
+ignore = E501
+exclude =
+  .git,
+  __pycache__,
+  build,
+  dist,
+  venv
+  .venv,
+  env,
+  .env,
+  README.md,
+  requirements.txt
