@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class BaseAlert(ABC):
     @abstractmethod
     def fetch_data(self):
