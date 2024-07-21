@@ -5,7 +5,7 @@ Catastrophic Alert is an SMS alert system for catastrophic natural disasters. Cu
 Feature roadmap:
 - [X] Earthquakes
 - [ ] Tsunamis
-- [ ] Volcanos
+- [X] Volcanos
 - [ ] Tornados
 - [ ] Solar flares
 - [ ] Geomagnetic storms
