@@ -1,14 +1,15 @@
 import requests
+from typing import Dict, Any, List
 from .base_alert import BaseAlert
 from config.config import Config
 
 
 class EarthquakeAlert(BaseAlert):
     def __init__(self):
-        self.config = Config()
-        self.api_url = "https://earthquake.usgs.gov/fdsnws/event/1/query"
+        self.config: Config = Config()
+        self.api_url: str = "https://earthquake.usgs.gov/fdsnws/event/1/query"
 
-    def fetch_data(self):
+    def fetch_data(self) -> List[Dict[str, Any]]:
         params = {
             "format": "geojson",
             "starttime": self.config.get_start_time(),
@@ -23,37 +24,35 @@ class EarthquakeAlert(BaseAlert):
         response.raise_for_status()
         return response.json().get("features", [])
 
-    def should_alert(self, earthquake):
-        if not isinstance(earthquake, dict):
-            raise ValueError("invalid earthquake object: not a dictionary")
-
-        properties = earthquake.get("properties")
-        if not properties:
-            raise KeyError("earthquake['properties'] does not exist")
-
-        magnitude = properties.get("mag")
-        if not magnitude:
-            raise KeyError("earthquake['properties']['mag'] does not exist")
-
+    def should_alert(self, earthquake: Dict[str, Any]) -> bool:
+        self._validate_earthquake(earthquake)
+        magnitude = earthquake["properties"]["mag"]
         return float(magnitude) >= float(self.config.get("MIN_MAGNITUDE"))
 
-    def format_alert(self, earthquake):
+    def format_alert(self, earthquake: Dict[str, Any]) -> str:
+        self._validate_earthquake(earthquake)
+        magnitude = earthquake["properties"]["mag"]
+        place = earthquake["properties"]["place"]
+        time = earthquake["properties"]["time"]
+        formatted_time = self.config.format_time(time)
+        return f"ALERT! {magnitude} magnitude earthquake detected {place} at {formatted_time}"
+
+    def get_id(self, earthquake: Dict[str, Any]) -> str:
+        if "id" not in earthquake:
+            raise KeyError("earthquake['id'] does not exist")
+        return earthquake["id"]
+
+    def _validate_earthquake(self, earthquake: Dict[str, Any]) -> None:
         if not isinstance(earthquake, dict):
             raise ValueError("invalid earthquake object: not a dictionary")
 
         properties = earthquake.get("properties")
+        print(properties)
         if not properties:
             raise KeyError("earthquake['properties'] does not exist")
-
-        magnitude = properties.get("mag")
-        place = properties.get("place")
-        time = properties.get("time")
-        if not magnitude:
+        if "mag" not in properties:
             raise KeyError("earthquake['properties']['mag'] does not exist")
-        if not place:
+        if "place" not in properties:
             raise KeyError("earthquake['properties']['place'] does not exist")
-        if not time:
+        if "time" not in properties:
             raise KeyError("earthquake['properties']['time'] does not exist")
-
-        formatted_time = self.config.format_time(time)
-        return f"ALERT! {magnitude} magnitude earthquake detected {place} at {formatted_time}"
