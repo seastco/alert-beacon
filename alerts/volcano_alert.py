@@ -26,13 +26,11 @@ class VolcanoAlert(BaseAlert):
         required_keys = ["volcano_name_appended", "latitude", "longitude"]
         self._validate_volcano(volcano, required_keys)
 
-        volcano_name = volcano["volcano_name_appended"]
         latitude = volcano["latitude"]
         longitude = volcano["longitude"]
-
         location = self.geolocator.reverse((latitude, longitude))
         locality, state = self._validate_location(location)
-
+        volcano_name = volcano["volcano_name_appended"]
         return f"ALERT! {volcano_name} near {locality}, {state}, is experiencing a major eruption."
 
     def get_id(self, volcano: Dict[str, Any]) -> str:

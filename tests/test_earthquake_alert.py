@@ -52,7 +52,8 @@ class TestEarthquakeAlert(unittest.TestCase):
         formatted_alert = self.alert.format_alert(earthquake)
         self.assertIn("ALERT!", formatted_alert)
         self.assertIn(
-            "6.5 magnitude earthquake detected 5 km NE of Detroit, Michigan", formatted_alert
+            "6.5 magnitude earthquake detected 5 km NE of Detroit, Michigan",
+            formatted_alert,
         )
 
 
