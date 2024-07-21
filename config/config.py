@@ -1,7 +1,7 @@
 import os
+import pytz
 import time
 from datetime import datetime
-import pytz
 
 class Config:
     def __init__(self):

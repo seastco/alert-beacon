@@ -7,7 +7,7 @@ pip install -r requirements.txt
 
 # Make lambda_package, copy in source code and packages, zip
 mkdir -p lambda_package
-cp -r ./ lambda_package/
+cp -r . lambda_package/
 cp -r venv/lib/python3.10/site-packages/* lambda_package/ 
 cp -r venv/lib64/python3.10/site-packages/* lambda_package/
 cd lambda_package
