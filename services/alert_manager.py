@@ -9,6 +9,7 @@ class AlertManager:
 
     def process_alerts(self, alert_types):
         alerts_to_send = []
+        alert_ids_to_store = []
 
         for alert_type in alert_types:
             alert = AlertFactory.create_alert(alert_type)
@@ -22,4 +23,6 @@ class AlertManager:
             subscribers = self.storage_service.get_subscribers()
             for alert_id, message in alerts_to_send:
                 self.notification_service.send_alert(message, subscribers)
-                self.storage_service.store_sent_alert(alert_id)
+                alert_ids_to_store.append(alert_id)
+
+            self.storage_service.store_sent_alerts(alert_ids_to_store)
