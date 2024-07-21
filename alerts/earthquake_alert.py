@@ -6,8 +6,8 @@ from config.config import Config
 
 class EarthquakeAlert(BaseAlert):
     def __init__(self):
-        self.config = Config()
-        self.api_url = "https://earthquake.usgs.gov/fdsnws/event/1/query"
+        self.config: Config = Config()
+        self.api_url: str = "https://earthquake.usgs.gov/fdsnws/event/1/query"
 
     def fetch_data(self) -> List[Dict[str, Any]]:
         params = {
