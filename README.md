@@ -6,7 +6,6 @@ Feature roadmap:
 - [X] Earthquakes
 - [ ] Tsunamis
 - [X] Volcanos
-- [ ] Tornados
 - [ ] Solar flares
 - [ ] Geomagnetic storms
 
