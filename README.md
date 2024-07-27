@@ -58,11 +58,6 @@ Coming soon
 </details>
 
 <details>
-<summary><h3><b>Tornados</b></h3></summary>
-Coming soon
-</details>
-
-<details>
 <summary><h3><b>Solar flares</b></h3></summary>
 Coming soon
 </details>
