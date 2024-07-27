@@ -4,7 +4,6 @@ Catastrophic Alert is an SMS alert system for catastrophic natural disasters. Cu
 
 Feature roadmap:
 - [X] Earthquakes
-- [ ] Tsunamis
 - [X] Volcanos
 - [ ] Solar flares
 - [ ] Geomagnetic storms
@@ -45,11 +44,6 @@ Under pressure from oceanic plate Juan de Fuca, the stuck edge of North America 
 By the time the shaking has ceased and the tsunami has receded, the Northwest coast of the United States will be unrecognizable. The area of impact will cover some 140,000 square miles, including Seattle, Tacoma, Portland, Eugene, Salem (the capital city of Oregon), Olympia (the capital of Washington), and some 7 million people.
 
 Kenneth Murphy, who directs fema’s Region X, the division responsible for Oregon, Washington, Idaho, and Alaska, says, "Our operating assumption is that everything west of Interstate 5 will be toast."
-</details>
-
-<details>
-<summary><h3><b>Tsunamis</b></h3></summary>
-Coming soon
 </details>
 
 <details>
