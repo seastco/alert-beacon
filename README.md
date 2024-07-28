@@ -1,6 +1,6 @@
 # Tectonic Alert
 
-Tectonic Alert is an SMS alerting system for earthquakes and volcanos in the United States. 
+Tectonic Alert is an SMS alerting system for earthquakes and volcanos in the United States. Text "SHEEBA" to `(844) 571-2169` to subscribe!
 
 The alert threshold is:
 - 6.5+ magnitude earthquake in the continental U.S.
