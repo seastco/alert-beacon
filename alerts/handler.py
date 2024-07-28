@@ -1,5 +1,5 @@
 import logging
-from services.alert_manager import AlertManager
+from alerts.alert_manager import AlertManager
 
 logger = logging.getLogger(__name__)
 

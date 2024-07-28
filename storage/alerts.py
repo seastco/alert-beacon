@@ -5,26 +5,13 @@ from botocore.exceptions import ClientError
 from config.config import Config
 
 
-class StorageService:
+class SentALerts:
     def __init__(self):
         self.config: Config = Config()
         self.dynamodb = boto3.resource("dynamodb")
-        self.subscribers_table = self.dynamodb.Table("Subscribers")
         self.alerts_table = self.dynamodb.Table("SentAlerts")
-        self.environment: str = self.config.get("ENVIRONMENT")
-        self.test_subscribers: List[str] = self.config.get("TEST_SUBSCRIBERS")
         self.logger: logging.Logger = logging.getLogger(__name__)
         self.logger.setLevel(logging.INFO)
-
-    def get_subscribers(self) -> List[str]:
-        if self.environment != "prod":
-            return self.test_subscribers
-        try:
-            response = self.subscribers_table.scan()
-            return [item["PhoneNumber"] for item in response["Items"]]
-        except ClientError as e:
-            self.logger.error(f"Error fetching subscribers: {e}")
-            raise
 
     def alert_already_sent(self, alert_id: str) -> bool:
         try:
