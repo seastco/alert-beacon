@@ -1,20 +1,24 @@
 import unittest
-from unittest.mock import patch, MagicMock
 import alerts.handler as handler
 from alerts.alert_manager import AlertManager
 from alerts.earthquake_alert import EarthquakeAlert
 from alerts.volcano_alert import VolcanoAlert
+from unittest.mock import patch, MagicMock
 
 
 class TestMain(unittest.TestCase):
     @patch("alerts.alert_factory.AlertFactory.create_alert")
-    @patch("alerts.storage_service.StorageService")
-    @patch("main.AlertManager")
-    def test_lambda_handler(self, MockAlertManager, MockStorageService, mock_create_alert):
-        # Set up mock storage service
-        mock_storage_service = MockStorageService.return_value
-        mock_storage_service.get_subscribers.return_value = ["+18102786241"]
-        mock_storage_service.alert_already_sent.return_value = False
+    @patch("storage.alerts.SentAlerts")
+    @patch("storage.subscribers.Subscribers")
+    @patch("alerts.handler.AlertManager")
+    def test_lambda_handler(
+        self, MockAlertManager, MockSubscribers, MockSentAlerts, mock_create_alert
+    ):
+        # Set up storage mocks
+        mock_sent_alerts = MockSentAlerts.return_value
+        mock_subscribers = MockSubscribers.return_value
+        mock_subscribers.get_subscribers.return_value = ["+18102786241"]
+        mock_sent_alerts.alert_already_sent.return_value = False
 
         # Set up mock alerts
         mock_alerts = {
@@ -26,7 +30,9 @@ class TestMain(unittest.TestCase):
         mock_create_alert.side_effect = lambda alert_type: mock_alerts[alert_type]
 
         # Initialize and patch AlertManager
-        alert_manager = AlertManager(storage_service=mock_storage_service)
+        alert_manager = AlertManager(
+            sent_alerts_table=mock_sent_alerts, subscribers_table=mock_subscribers
+        )
         MockAlertManager.return_value = alert_manager
 
         # Run the lambda_handler

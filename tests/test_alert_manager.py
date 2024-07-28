@@ -6,7 +6,7 @@ from alerts.earthquake_alert import EarthquakeAlert
 
 class TestAlertManager(unittest.TestCase):
     @patch("storage.alerts.SentAlerts")
-    @patch("storage.alerts.Subscribers")
+    @patch("storage.subscribers.Subscribers")
     @patch("alerts.alert_manager.NotificationService")
     @patch("alerts.alert_factory.AlertFactory.create_alert")
     def test_process_alerts(
