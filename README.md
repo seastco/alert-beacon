@@ -48,7 +48,7 @@ Under pressure from oceanic plate Juan de Fuca, the stuck edge of North America 
 
 By the time the shaking has ceased and the tsunami has receded, the Northwest coast of the United States will be unrecognizable. The area of impact will cover some 140,000 square miles, including Seattle, Tacoma, Portland, Eugene, Salem (the capital city of Oregon), Olympia (the capital of Washington), and some 7 million people. Kenneth Murphy, who directs fema’s Region X, the division responsible for Oregon, Washington, Idaho, and Alaska, says, "Our operating assumption is that everything west of Interstate 5 will be toast."
 
-The Pacific Northwest has experienced forty-one subduction-zone earthquakes in the past ten thousand years. If you divide ten thousand by forty-one, you get two hundred and forty-three, which is Cascadia’s recurrence interval: the average amount of time that elapses between earthquakes. Counting from the earthquake of 1700, we are now three hundred and fifteen years into a two-hundred-and-forty-three-year cycle.
+The Pacific Northwest has experienced 41 subduction-zone earthquakes in the past ten thousand years. If you divide 10,000 by 41, you get 243, which is Cascadia’s recurrence interval: the average amount of time that elapses between earthquakes. Counting from the earthquake of 1700, we are now 315 years into a 243-year cycle.
 
 ![cascadia](https://github.com/user-attachments/assets/f3f26766-0b5f-438e-b6e1-3a03e94a547c)
 
