@@ -18,25 +18,6 @@ The alert threshold is:
 ## Areas of Interest
 ![overall_map](https://github.com/user-attachments/assets/b0771702-be9b-43a3-b16b-d3f216a60982)
 
-
-### The Aleutian Trench
-
-The Aleutian Trench has more seismic activity than anywhere in the United States. It is responsible for the 9.2 magnitude earthquake near Anchorage, Alaska in 1964, which is known to be the most powerful earthquake ever recorded in North America, and the second most powerful earthquake ever recorded in the world. The entire trench is purposely not being monitored, as the Aleutian island chain is sparsely populated. Anchorage, however, is Alaska's most populous city and at highest risk for catastrophic damage. The 1964 earthquake killed 131 people and caused $3 billion of damage (in 2022 USD).
-
-![aleutian_trench](https://github.com/user-attachments/assets/1eaed73b-2bcb-4df4-8484-2d7a4fe002f1)
-
-
-### Cascadia Subduction Zone
-
-Under pressure from oceanic plate Juan de Fuca, the stuck edge of North America is bulging upward and compressing eastward at the rate of millimetres a year. But it cannot do so indefinitely. There is a backstop—the craton, that ancient unbudgeable mass at the center of the continent—and, sooner or later, North America will rebound like a spring. If only the southern part of the Cascadia subduction zone gives way, the magnitude of the resulting quake will be somewhere between 8.0 and 8.6. If the entire zone gives way at once, an event that seismologists call a full-margin rupture, the magnitude will be somewhere between 8.7 and 9.2. Seismotologists have dubbed this _The Really Big One_ <sup>[1](https://www.newyorker.com/magazine/2015/07/20/the-really-big-one)</sup>
-
-By the time the shaking has ceased and the tsunami has receded, the Northwest coast of the United States will be unrecognizable. The area of impact will cover some 140,000 square miles, including Seattle, Tacoma, Portland, Eugene, Salem (the capital city of Oregon), Olympia (the capital of Washington), and some 7 million people. Kenneth Murphy, who directs fema’s Region X, the division responsible for Oregon, Washington, Idaho, and Alaska, says, "Our operating assumption is that everything west of Interstate 5 will be toast."
-
-The Pacific Northwest has experienced forty-one subduction-zone earthquakes in the past ten thousand years. If you divide ten thousand by forty-one, you get two hundred and forty-three, which is Cascadia’s recurrence interval: the average amount of time that elapses between earthquakes. Counting from the earthquake of 1700, we are now three hundred and fifteen years into a two-hundred-and-forty-three-year cycle.
-
-![cascadia](https://github.com/user-attachments/assets/f3f26766-0b5f-438e-b6e1-3a03e94a547c)
-
-
 ### Southern San Andreas Fault
 
 The southern San Andreas Fault is in a seismic drought. An earthquake has historically occurred every 180 years, give or take 40 years. The last earthquake happened around 1700, making this a catastrophe that's locked and loaded. 
@@ -61,6 +42,21 @@ What's especially terrifying about a San Francisco earthquake is that most of th
 
 ![352793023-978b99a2-49e5-427c-aa4b-7f2c921e228f](https://github.com/user-attachments/assets/ce23b26e-616f-4cd3-9b9f-d4ac09c36910)
 
+### Cascadia Subduction Zone
+
+Under pressure from oceanic plate Juan de Fuca, the stuck edge of North America is bulging upward and compressing eastward at the rate of millimetres a year. But it cannot do so indefinitely. There is a backstop—the craton, that ancient unbudgeable mass at the center of the continent—and, sooner or later, North America will rebound like a spring. If only the southern part of the Cascadia subduction zone gives way, the magnitude of the resulting quake will be somewhere between 8.0 and 8.6. If the entire zone gives way at once, an event that seismologists call a full-margin rupture, the magnitude will be somewhere between 8.7 and 9.2. Seismotologists have dubbed this _The Really Big One_ <sup>[1](https://www.newyorker.com/magazine/2015/07/20/the-really-big-one)</sup>
+
+By the time the shaking has ceased and the tsunami has receded, the Northwest coast of the United States will be unrecognizable. The area of impact will cover some 140,000 square miles, including Seattle, Tacoma, Portland, Eugene, Salem (the capital city of Oregon), Olympia (the capital of Washington), and some 7 million people. Kenneth Murphy, who directs fema’s Region X, the division responsible for Oregon, Washington, Idaho, and Alaska, says, "Our operating assumption is that everything west of Interstate 5 will be toast."
+
+The Pacific Northwest has experienced forty-one subduction-zone earthquakes in the past ten thousand years. If you divide ten thousand by forty-one, you get two hundred and forty-three, which is Cascadia’s recurrence interval: the average amount of time that elapses between earthquakes. Counting from the earthquake of 1700, we are now three hundred and fifteen years into a two-hundred-and-forty-three-year cycle.
+
+![cascadia](https://github.com/user-attachments/assets/f3f26766-0b5f-438e-b6e1-3a03e94a547c)
+
+### The Aleutian Trench
+
+The Aleutian Trench has more seismic activity than anywhere in the United States. It is responsible for the 9.2 magnitude earthquake near Anchorage, Alaska in 1964, which is known to be the most powerful earthquake ever recorded in North America, and the second most powerful earthquake ever recorded in the world. The entire trench is purposely not being monitored, as the Aleutian island chain is sparsely populated. Anchorage, however, is Alaska's most populous city and at highest risk for catastrophic damage. The 1964 earthquake killed 131 people and caused $3 billion of damage (in 2022 USD).
+
+![aleutian_trench](https://github.com/user-attachments/assets/1eaed73b-2bcb-4df4-8484-2d7a4fe002f1)
 
 ### New Madrid Seismic Zone
 The highest earthquake risk in the United States outside the West Coast is in the New Madrid Seismic Zone. Damaging earthquakes are not as frequent as in California. But when they do occur, the destruction covers more than 20 times the area due to the geologic differences between the two regions. The USGS reports that catastrophic earthquakes visit the New Madrid region every 500-600 years, with the last one being in the early 1800s.
