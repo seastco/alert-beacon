@@ -5,7 +5,7 @@ from botocore.exceptions import ClientError
 from config.config import Config
 
 
-class SentALerts:
+class SentAlerts:
     def __init__(self):
         self.config: Config = Config()
         self.dynamodb = boto3.resource("dynamodb")
