@@ -12,6 +12,7 @@ class Subscribers:
         self.dynamodb = boto3.resource("dynamodb")
         self.subscribers_table = self.dynamodb.Table("Subscribers")
         self.environment: str = self.config.get("ENVIRONMENT")
+        self.test_subscribers: List[str] = self.config.get("TEST_SUBSCRIBERS")
         self.logger: logging.Logger = logging.getLogger(__name__)
         self.logger.setLevel(logging.INFO)
 

@@ -1,5 +1,5 @@
 import unittest
-import alerts.handler as handler
+from main import lambda_handler
 from alerts.alert_manager import AlertManager
 from alerts.earthquake_alert import EarthquakeAlert
 from alerts.volcano_alert import VolcanoAlert
@@ -36,7 +36,8 @@ class TestMain(unittest.TestCase):
         MockAlertManager.return_value = alert_manager
 
         # Run the lambda_handler
-        response = handler.lambda_handler(None, None)
+        test_event = {"handler": "alerts"}
+        response = lambda_handler(test_event, None)
         self.assertEqual(response["statusCode"], 200)
 
     @staticmethod
