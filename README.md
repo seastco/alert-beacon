@@ -34,7 +34,7 @@ https://github.com/user-attachments/assets/e9613c3f-8fe0-4f4e-ab27-474b3f8a94bb
 
 ### Hayward Fault
 
-The Hayward Fault lies to the east of San Francisco, across the San Francisco Bay. The distance between downtown San Francisco and the closest points of the fault in the East Bay is roughly 10-15 miles. Years between major earthquakes on the Hayward Fault: 158, 154, 96, 143. We're at 155. Yet another overdue California earthquake.
+The Hayward Fault lies to the east of San Francisco, across the San Francisco Bay. The distance between downtown San Francisco and the closest points of the fault in the East Bay is roughly 10-15 miles. Years between major earthquakes on the Hayward Fault: 158, 154, 96, 143. We're at 155. Yet another imminent California earthquake.
 
 https://github.com/user-attachments/assets/85e104c6-d332-4421-94b2-ebbf23fc78a9
 
@@ -48,7 +48,7 @@ Under pressure from oceanic plate Juan de Fuca, the stuck edge of North America 
 
 By the time the shaking has ceased and the tsunami has receded, the Northwest coast of the United States will be unrecognizable. The area of impact will cover some 140,000 square miles, including Seattle, Tacoma, Portland, Eugene, Salem (the capital city of Oregon), Olympia (the capital of Washington), and some 7 million people. Kenneth Murphy, who directs fema’s Region X, the division responsible for Oregon, Washington, Idaho, and Alaska, says, "Our operating assumption is that everything west of Interstate 5 will be toast."
 
-The Pacific Northwest has experienced 41 subduction-zone earthquakes in the past ten thousand years. If you divide 10,000 by 41, you get 243, which is Cascadia’s recurrence interval: the average amount of time that elapses between earthquakes. Counting from the earthquake of 1700, we are now 315 years into a 243-year cycle.
+The Pacific Northwest has experienced 41 subduction-zone earthquakes in the past 10,000 years. If you divide 10,000 by 41, you get 243, which is Cascadia’s recurrence interval: the average amount of time that elapses between earthquakes. Counting from the earthquake of 1700, we are now 315 years into a 243-year cycle.
 
 ![cascadia](https://github.com/user-attachments/assets/f3f26766-0b5f-438e-b6e1-3a03e94a547c)
 
