@@ -35,6 +35,5 @@ aws lambda update-function-code --function-name "$LAMBDA_FUNCTION_NAME" --zip-fi
 sleep 15
 aws lambda publish-version --function-name "$LAMBDA_FUNCTION_NAME"
 
-# Upload 
 # Clean up zip file
 rm -f "$ZIP_FILE"
