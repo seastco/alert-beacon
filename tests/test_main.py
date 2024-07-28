@@ -1,14 +1,14 @@
 import unittest
 from unittest.mock import patch, MagicMock
-import main
-from services.alert_manager import AlertManager
+import alerts.handler as handler
+from alerts.alert_manager import AlertManager
 from alerts.earthquake_alert import EarthquakeAlert
 from alerts.volcano_alert import VolcanoAlert
 
 
 class TestMain(unittest.TestCase):
-    @patch("services.alert_factory.AlertFactory.create_alert")
-    @patch("services.storage_service.StorageService")
+    @patch("alerts.alert_factory.AlertFactory.create_alert")
+    @patch("alerts.storage_service.StorageService")
     @patch("main.AlertManager")
     def test_lambda_handler(self, MockAlertManager, MockStorageService, mock_create_alert):
         # Set up mock storage service
@@ -30,7 +30,7 @@ class TestMain(unittest.TestCase):
         MockAlertManager.return_value = alert_manager
 
         # Run the lambda_handler
-        response = main.lambda_handler(None, None)
+        response = handler.lambda_handler(None, None)
         self.assertEqual(response["statusCode"], 200)
 
     @staticmethod
