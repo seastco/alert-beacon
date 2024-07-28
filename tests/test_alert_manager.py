@@ -1,21 +1,25 @@
 import unittest
 from unittest.mock import MagicMock, patch
-from services.alert_manager import AlertManager
+from alerts.alert_manager import AlertManager
 from alerts.earthquake_alert import EarthquakeAlert
 
 
 class TestAlertManager(unittest.TestCase):
-    @patch("services.alert_manager.StorageService")
-    @patch("services.alert_manager.NotificationService")
-    @patch("services.alert_factory.AlertFactory.create_alert")
-    def test_process_alerts(self, mock_create_alert, MockNotificationService, MockStorageService):
-        # Mock storage service
-        mock_storage_service = MockStorageService.return_value
-        mock_storage_service.get_subscribers.return_value = [
+    @patch("storage.alerts.SentAlerts")
+    @patch("storage.subscribers.Subscribers")
+    @patch("alerts.alert_manager.NotificationService")
+    @patch("alerts.alert_factory.AlertFactory.create_alert")
+    def test_process_alerts(
+        self, mock_create_alert, MockNotificationService, MockSubscribers, MockSentAlerts
+    ):
+        # Mock storage calls
+        mock_subscribers = MockSubscribers.return_value
+        mock_subscribers.get_subscribers.return_value = [
             "+1234567890",
             "+0987654321",
         ]
-        mock_storage_service.alert_already_sent.return_value = False
+        mock_sent_alerts = MockSentAlerts.return_value
+        mock_sent_alerts.alert_already_sent.return_value = False
 
         # Mock notification service
         mock_notification_service = MockNotificationService.return_value
@@ -46,7 +50,8 @@ class TestAlertManager(unittest.TestCase):
         # Initialize AlertManager with mocks
         alert_manager = AlertManager(
             notification_service=mock_notification_service,
-            storage_service=mock_storage_service,
+            sent_alerts_table=mock_sent_alerts,
+            subscribers_table=mock_subscribers,
         )
 
         # Process alerts
@@ -57,7 +62,7 @@ class TestAlertManager(unittest.TestCase):
         mock_notification_service.send_alert.assert_called_with(
             expected_message, ["+1234567890", "+0987654321"]
         )
-        mock_storage_service.store_sent_alerts.assert_called_once_with(["test1"])
+        mock_sent_alerts.store_sent_alerts.assert_called_once_with(["test1"])
 
 
 if __name__ == "__main__":
