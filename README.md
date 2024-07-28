@@ -1,25 +1,16 @@
-# Catastrophic Alert
+# Tectonic Alert
 
-Catastrophic Alert is an SMS alert system for catastrophic natural disasters. Currently only monitoring for 6.1+ magnitude earthquakes on the United States west coast, in anticipation of this century's _Big One_ events.
+Tectonic Alert is an SMS alerting system for catastrophic volcanos and earthquakes in the United States. To subscribe, email me your phone number at seastco@proton.me. Opt-in subscription coming soon!
 
-Feature roadmap:
-- [X] Earthquakes
-- [X] Volcanos
-- [ ] Solar flares
-- [ ] Geomagnetic storms
+## Areas of Interest
+![overall_map](https://github.com/user-attachments/assets/b0771702-be9b-43a3-b16b-d3f216a60982)
 
-To subscribe, email me your phone number at seastco@proton.me.
+### The Aleutian Trench
 
-<details>
-<summary><h3><b>Earthquakes</b></h3></summary>
-  
-### [Magnitude scale](https://en.wikipedia.org/wiki/Moment_magnitude_scale)
-- 2.5 or less - Usually not felt, but can be recorded by seismograph.
-- 2.5 to 5.4 - Often felt, but only causes minor damage.
-- 5.5 to 6.0 - Slight damage to buildings and other structures.
-- 6.1 to 6.9 - May cause a lot of damage in very populated areas.
-- 7.0 to 7.9 - Major earthquake. Serious damage.
-- 8.0 or greater - Great earthquake. Can totally destroy communities near the epicenter.
+The Aleutian Trench experiences  seismic activity than anywhere in the United States. It is responsible for the 9.2 magnitude earthquake near Anchorage, Alaska in 1964, which is known to be the most powerful earthquake ever recorded in North America, and the second most powerful earthquake ever recorded in the world. The entire trench is not being monitored, as the Aleutian island chain is sparesely populated. Anchorage is Alaska's most populous city and at highest risk for catastrophic damage. The 1964 earthquake killed 131 people and caused $3 billion of damage (in 2022 USD).
+
+![aleutian_trench](https://github.com/user-attachments/assets/1eaed73b-2bcb-4df4-8484-2d7a4fe002f1)
+
 
 California has experienced six 6.1+ magnitude earthquakes since 2000. Oregon and Washington have each experienced one.
 
@@ -60,3 +51,13 @@ Coming soon
 <summary><h3><b>Geomagnetic storms</b></h3></summary>
 Coming soon
 </details>
+
+
+  
+## [Magnitude scale](https://en.wikipedia.org/wiki/Moment_magnitude_scale)
+- 2.5 or less - Usually not felt, but can be recorded by seismograph.
+- 2.5 to 5.4 - Often felt, but only causes minor damage.
+- 5.5 to 6.0 - Slight damage to buildings and other structures.
+- 6.1 to 6.9 - May cause a lot of damage in very populated areas.
+- 7.0 to 7.9 - Major earthquake. Serious damage.
+- 8.0 or greater - Great earthquake. Can totally destroy communities near the epicenter.
