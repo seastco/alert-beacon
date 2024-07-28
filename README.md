@@ -1,6 +1,19 @@
 # Tectonic Alert
 
-Tectonic Alert is an SMS alerting system for catastrophic volcanos and earthquakes in the United States.
+Tectonic Alert is an SMS alerting system for earthquakes and volcanos in the United States. 
+
+The alert threshold is:
+- 6.5+ magnitude earthquake in the continental U.S.
+- 7.0+ magnitude earthquake in Alaska or Hawaii.
+- Any volcanic eruption with hazardous activity both on the ground and in the air.
+
+### [Magnitude scale](https://en.wikipedia.org/wiki/Moment_magnitude_scale)
+- 2.5 or less - Usually not felt, but can be recorded by seismograph.
+- 2.5 to 5.4 - Often felt, but only causes minor damage.
+- 5.5 to 6.0 - Slight damage to buildings and other structures.
+- 6.1 to 6.9 - May cause a lot of damage in very populated areas.
+- 7.0 to 7.9 - Major earthquake. Serious damage.
+- 8.0 or greater - Great earthquake. Can totally destroy communities near the epicenter.
 
 ## Areas of Interest
 ![overall_map](https://github.com/user-attachments/assets/b0771702-be9b-43a3-b16b-d3f216a60982)
@@ -49,14 +62,7 @@ What's especially terrifying about a San Francisco earthquake is that most of th
 ![352793023-978b99a2-49e5-427c-aa4b-7f2c921e228f](https://github.com/user-attachments/assets/ce23b26e-616f-4cd3-9b9f-d4ac09c36910)
 
 
-### New Madrid Fault
-![new_madrid_fault](https://github.com/user-attachments/assets/d54b20f4-63a1-42d9-9ec3-1163e7533403)
+### New Madrid Seismic Zone
+The highest earthquake risk in the United States outside the West Coast is in the New Madrid Seismic Zone. Damaging earthquakes are not as frequent as in California. But when they do occur, the destruction covers more than 20 times the area due to the geologic differences between the two regions. The USGS reports that catastrophic earthquakes visit the New Madrid region every 500-600 years, with the last one being in the early 1800s.
 
-  
-## [Magnitude scale](https://en.wikipedia.org/wiki/Moment_magnitude_scale)
-- 2.5 or less - Usually not felt, but can be recorded by seismograph.
-- 2.5 to 5.4 - Often felt, but only causes minor damage.
-- 5.5 to 6.0 - Slight damage to buildings and other structures.
-- 6.1 to 6.9 - May cause a lot of damage in very populated areas.
-- 7.0 to 7.9 - Major earthquake. Serious damage.
-- 8.0 or greater - Great earthquake. Can totally destroy communities near the epicenter.
+![new_madrid_fault](https://github.com/user-attachments/assets/d54b20f4-63a1-42d9-9ec3-1163e7533403)
