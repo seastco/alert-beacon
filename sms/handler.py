@@ -23,8 +23,8 @@ def lambda_handler(event, context):
             subscribers.remove_subscriber(from_number)
             resp.message("You have unsubscribed from Tectonic Alert.")
         else:
-            resp.message("Invalid command. Please reply with SHEEBA or UNSHEEBA.")
-
+            # No-op
+            return {"statusCode": 200}
         return {
             "statusCode": 200,
             "headers": {"Content-Type": "application/xml"},
