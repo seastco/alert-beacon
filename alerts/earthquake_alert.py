@@ -8,26 +8,57 @@ class EarthquakeAlert(BaseAlert):
     def __init__(self):
         self.config: Config = Config()
         self.api_url: str = "https://earthquake.usgs.gov/fdsnws/event/1/query"
+        self.regions = [
+            {
+                "name": "Continental US",
+                "minmagnitude": self.config.get("CONUS_MIN_MAGNITUDE"),
+                "minlatitude": self.config.get("CONUS_MIN_LATITUDE"),
+                "maxlatitude": self.config.get("CONUS_MAX_LATITUDE"),
+                "minlongitude": self.config.get("CONUS_MIN_LONGITUDE"),
+                "maxlongitude": self.config.get("CONUS_MAX_LONGITUDE"),
+            },
+            {
+                "name": "Alaska",
+                "minmagnitude": self.config.get("ALASKA_MIN_MAGNITUDE"),
+                "minlatitude": self.config.get("ALASKA_MIN_LATITUDE"),
+                "maxlatitude": self.config.get("ALASKA_MAX_LATITUDE"),
+                "minlongitude": self.config.get("ALASKA_MIN_LONGITUDE"),
+                "maxlongitude": self.config.get("ALASKA_MAX_LONGITUDE"),
+            },
+            {
+                "name": "Hawaii",
+                "minmagnitude": self.config.get("HAWAII_MIN_MAGNITUDE"),
+                "minlatitude": self.config.get("HAWAII_MIN_LATITUDE"),
+                "maxlatitude": self.config.get("HAWAII_MAX_LATITUDE"),
+                "minlongitude": self.config.get("HAWAII_MIN_LONGITUDE"),
+                "maxlongitude": self.config.get("HAWAII_MAX_LONGITUDE"),
+            },
+        ]
 
     def fetch_data(self) -> List[Dict[str, Any]]:
-        params = {
-            "format": "geojson",
-            "starttime": self.config.get_start_time(),
-            "endtime": self.config.get_current_time(),
-            "minmagnitude": self.config.get("MIN_MAGNITUDE"),
-            "minlatitude": self.config.get("MIN_LATITUDE"),
-            "maxlatitude": self.config.get("MAX_LATITUDE"),
-            "minlongitude": self.config.get("MIN_LONGITUDE"),
-            "maxlongitude": self.config.get("MAX_LONGITUDE"),
-        }
-        response = requests.get(self.api_url, params=params)
-        response.raise_for_status()
-        return response.json().get("features", [])
+        data = []
+
+        for region in self.regions:
+            params = {
+                "format": "geojson",
+                "starttime": self.config.get_start_time(),
+                "endtime": self.config.get_current_time(),
+                "minmagnitude": region["minmagnitude"],
+                "minlatitude": region["minlatitude"],
+                "maxlatitude": region["maxlatitude"],
+                "minlongitude": region["minlongitude"],
+                "maxlongitude": region["maxlongitude"],
+            }
+            response = requests.get(self.api_url, params=params)
+            response.raise_for_status()
+            region_data = response.json().get("features", [])
+            data.extend(region_data)
+
+        return data
 
     def should_alert(self, earthquake: Dict[str, Any]) -> bool:
-        self._validate_earthquake(earthquake)
-        magnitude = earthquake["properties"]["mag"]
-        return float(magnitude) >= float(self.config.get("MIN_MAGNITUDE"))
+        # fetch_data does all the necessary filtering
+        return True
 
     def format_alert(self, earthquake: Dict[str, Any]) -> str:
         self._validate_earthquake(earthquake)
@@ -47,7 +78,6 @@ class EarthquakeAlert(BaseAlert):
             raise ValueError("invalid earthquake object: not a dictionary")
 
         properties = earthquake.get("properties")
-        print(properties)
         if not properties:
             raise KeyError("earthquake['properties'] does not exist")
         if "mag" not in properties:
