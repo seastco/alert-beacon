@@ -34,7 +34,7 @@ https://github.com/user-attachments/assets/e9613c3f-8fe0-4f4e-ab27-474b3f8a94bb
 
 ### Hayward Fault
 
-Years between major earthquakes on the Hayward Fault: 158, 154, 96, 143. We're at 155. Yet another overdue California earthquake. What's most frightening about this one, is the fact that 
+The Hayward Fault lies to the east of San Francisco, across the San Francisco Bay. The distance between downtown San Francisco and the closest points of the fault in the East Bay is roughly 10-15 miles. Years between major earthquakes on the Hayward Fault: 158, 154, 96, 143. We're at 155. Yet another overdue California earthquake.
 
 https://github.com/user-attachments/assets/85e104c6-d332-4421-94b2-ebbf23fc78a9
 
